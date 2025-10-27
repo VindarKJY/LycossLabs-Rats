@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Lengkap JavaScript: Objek, Properti, dan Metode</title>
+    <style>
+      :root {
+        --primary: #f39c12;
+        --secondary: #e67e22;
+        --accent: #d35400;
+        --light: #fef9e7;
+        --dark: #2c3e50;
+        --success: #27ae60;
+        --warning: #e74c3c;
+        --info: #3498db;
+      }
+
+      * {
+        margin: 0;
+        padding: 1.2rem ;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--dark);
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 30px;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        color: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        margin-bottom: 15px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .controls {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .search-box {
+        flex: 1;
+        min-width: 300px;
+      }
+
+      #searchInput {
+        width: 100%;
+        padding: 15px 20px;
+        border: none;
+        border-radius: 50px;
+        font-size: 1.1rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+      }
+
+      #searchInput:focus {
+        outline: none;
+        box-shadow: 0 5px 20px rgba(243, 156, 18, 0.3);
+        transform: translateY(-2px);
+      }
+
+      .filter-buttons {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .filter-btn {
+        padding: 10px 20px;
+        background: white;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .filter-btn.active {
+        background: var(--primary);
+        color: white;
+      }
+
+      .filter-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 25px;
+      }
+
+      .category {
+        background-color: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border-left: 5px solid var(--primary);
+      }
+
+      .category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .category h2 {
+        color: var(--primary);
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 15px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .category h2 i {
+        margin-right: 10px;
+        font-size: 1.5rem;
+      }
+
+      .element {
+        margin-bottom: 20px;
+        padding: 15px;
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        transition: all 0.2s ease;
+      }
+
+      .element:hover {
+        background-color: #e9ecef;
+      }
+
+      .element-name {
+        font-weight: bold;
+        color: var(--secondary);
+        margin-bottom: 8px;
+        font-family: "Courier New", monospace;
+        font-size: 1.1rem;
+      }
+
+      .element-desc {
+        font-size: 0.95rem;
+        color: #495057;
+        margin-bottom: 10px;
+      }
+
+      .element-type {
+        display: inline-block;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        margin-right: 8px;
+      }
+
+      .type-object {
+        background-color: var(--info);
+        color: white;
+      }
+
+      .type-method {
+        background-color: var(--success);
+        color: white;
+      }
+
+      .type-property {
+        background-color: var(--warning);
+        color: white;
+      }
+
+      .type-global {
+        background-color: var(--accent);
+        color: white;
+      }
+
+      .element-example {
+        margin-top: 8px;
+        font-size: 0.85rem;
+        color: #6c757d;
+        font-family: "Courier New", monospace;
+        background-color: #e9ecef;
+        padding: 8px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+
+      .stats {
+        display: flex;
+        justify-content: space-between;
+        background-color: white;
+        padding: 20px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      .stat-item {
+        text-align: center;
+        flex: 1;
+      }
+
+      .stat-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .stat-label {
+        font-size: 1rem;
+        color: #6c757d;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .stats {
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        .controls {
+          flex-direction: column;
+          align-items: stretch;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Daftar Lengkap JavaScript</h1>
+        <p class="subtitle">
+          Objek, Properti, Metode, dan Fungsi Global JavaScript ES6+
+        </p>
+      </header>
+
+      <div class="stats">
+        <div class="stat-item">
+          <div class="stat-number" id="totalElements">0</div>
+          <div class="stat-label">Total Elemen</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" id="totalCats">0</div>
+          <div class="stat-label">Kategori</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">ES6+</div>
+          <div class="stat-label">Versi JavaScript</div>
+        </div>
+      </div>
+
+      <div class="content" id="elementsContainer">
+        <!-- Objek Global -->
+        <div class="category">
+          <h2>🌐 Objek Global</h2>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Object</div>
+            <div class="element-desc">
+              Objek dasar dalam JavaScript, semua objek lain diturunkan dari
+              Object
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">
+              const obj = { name: "John", age: 30 };
+            </div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Array</div>
+            <div class="element-desc">
+              Objek untuk menyimpan kumpulan nilai dalam satu variabel
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const arr = [1, 2, 3, 4, 5];</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Function</div>
+            <div class="element-desc">
+              Objek yang merepresentasikan fungsi dalam JavaScript
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">
+              function myFunc() { return "Hello"; }
+            </div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">String</div>
+            <div class="element-desc">
+              Objek untuk merepresentasikan dan memanipulasi urutan karakter
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">
+              const str = new String("Hello World");
+            </div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Number</div>
+            <div class="element-desc">Objek pembungkus untuk nilai numerik</div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const num = new Number(42);</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Boolean</div>
+            <div class="element-desc">
+              Objek pembungkus untuk nilai true atau false
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const bool = new Boolean(true);</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Date</div>
+            <div class="element-desc">
+              Objek untuk bekerja dengan tanggal dan waktu
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const today = new Date();</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Math</div>
+            <div class="element-desc">
+              Objek built-in dengan properti dan metode untuk konstanta dan
+              fungsi matematika
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">Math.PI; // 3.141592653589793</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">RegExp</div>
+            <div class="element-desc">
+              Objek untuk bekerja dengan ekspresi reguler
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const regex = /ab+c/;</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Error</div>
+            <div class="element-desc">
+              Objek untuk merepresentasikan kesalahan runtime
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">
+              throw new Error("Something went wrong");
+            </div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Promise</div>
+            <div class="element-desc">
+              Objek yang merepresentasikan penyelesaian (atau kegagalan) operasi
+              asinkron
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">
+              new Promise((resolve, reject) => { ... });
+            </div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Map</div>
+            <div class="element-desc">
+              Koleksi pasangan kunci-nilai yang dapat diiterasi
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const map = new Map();</div>
+          </div>
+
+          <div class="element" data-type="object">
+            <div class="element-name">Set</div>
+            <div class="element-desc">
+              Koleksi nilai unik yang dapat diiterasi
+            </div>
+            <span class="element-type type-object">Objek</span>
+            <div class="element-example">const set = new Set([1, 2, 3]);</div>
+          </div>
+        </div>
+
+        <!-- Metode Array -->
+        <div class="category">
+          <h2>📊 Metode Array</h2>
+
+          <div class="element" data-type="method">
+            <div class="element-name">push()</div>
+            <div class="element-desc">
+              Menambahkan elemen ke akhir array dan mengembalikan panjang array
+              baru
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.push(6); // [1,2,3,4,5,6]</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">pop()</div>
+            <div class="element-desc">
+              Menghapus elemen terakhir dari array dan mengembalikannya
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.pop(); // 5, array menjadi [1,2,3,4]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">shift()</div>
+            <div class="element-desc">
+              Menghapus elemen pertama dari array dan mengembalikannya
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.shift(); // 1, array menjadi [2,3,4,5]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">unshift()</div>
+            <div class="element-desc">
+              Menambahkan elemen ke awal array dan mengembalikan panjang array
+              baru
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.unshift(0); // [0,1,2,3,4,5]</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">concat()</div>
+            <div class="element-desc">
+              Menggabungkan dua atau lebih array dan mengembalikan array baru
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr1.concat(arr2);</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">slice()</div>
+            <div class="element-desc">
+              Mengembalikan salinan dangkal dari bagian array
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.slice(1, 3); // [2,3]</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">splice()</div>
+            <div class="element-desc">
+              Mengubah konten array dengan menghapus atau mengganti elemen
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.splice(2, 1, 'a'); // [1,2,'a',4,5]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">forEach()</div>
+            <div class="element-desc">
+              Menjalankan fungsi sekali untuk setiap elemen array
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.forEach(item => console.log(item));
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">map()</div>
+            <div class="element-desc">
+              Membuat array baru dengan hasil memanggil fungsi pada setiap
+              elemen
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.map(x => x * 2); // [2,4,6,8,10]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">filter()</div>
+            <div class="element-desc">
+              Membuat array baru dengan semua elemen yang lulus tes
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.filter(x => x > 2); // [3,4,5]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">reduce()</div>
+            <div class="element-desc">
+              Menerapkan fungsi terhadap akumulator dan setiap elemen
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              arr.reduce((acc, val) => acc + val, 0); // 15
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">find()</div>
+            <div class="element-desc">
+              Mengembalikan nilai elemen pertama yang memenuhi kondisi
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.find(x => x > 3); // 4</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">some()</div>
+            <div class="element-desc">
+              Menguji apakah setidaknya satu elemen lulus tes
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.some(x => x > 4); // true</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">every()</div>
+            <div class="element-desc">
+              Menguji apakah semua elemen lulus tes
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.every(x => x > 0); // true</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">sort()</div>
+            <div class="element-desc">
+              Mengurutkan elemen array dan mengembalikan array
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.sort((a, b) => a - b);</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">reverse()</div>
+            <div class="element-desc">
+              Membalikkan urutan elemen dalam array
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">arr.reverse(); // [5,4,3,2,1]</div>
+          </div>
+        </div>
+
+        <!-- Metode String -->
+        <div class="category">
+          <h2>🔤 Metode String</h2>
+
+          <div class="element" data-type="method">
+            <div class="element-name">charAt()</div>
+            <div class="element-desc">
+              Mengembalikan karakter pada indeks tertentu
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".charAt(1); // "e"</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">concat()</div>
+            <div class="element-desc">Menggabungkan dua atau lebih string</div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              "Hello".concat(" World"); // "Hello World"
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">includes()</div>
+            <div class="element-desc">
+              Memeriksa apakah string berisi substring tertentu
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".includes("ell"); // true</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">indexOf()</div>
+            <div class="element-desc">
+              Mengembalikan indeks kemunculan pertama substring
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".indexOf("l"); // 2</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">replace()</div>
+            <div class="element-desc">
+              Mengganti kemunculan substring dengan string baru
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              "Hello".replace("l", "x"); // "Hexlo"
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">slice()</div>
+            <div class="element-desc">
+              Mengekstrak bagian string dan mengembalikannya sebagai string baru
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".slice(1, 3); // "el"</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">split()</div>
+            <div class="element-desc">
+              Membagi string menjadi array substring
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              "Hello World".split(" "); // ["Hello", "World"]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">substring()</div>
+            <div class="element-desc">
+              Mengembalikan bagian string antara indeks awal dan akhir
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".substring(1, 3); // "el"</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">toLowerCase()</div>
+            <div class="element-desc">Mengubah string menjadi huruf kecil</div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"HELLO".toLowerCase(); // "hello"</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">toUpperCase()</div>
+            <div class="element-desc">Mengubah string menjadi huruf besar</div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"hello".toUpperCase(); // "HELLO"</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">trim()</div>
+            <div class="element-desc">
+              Menghapus spasi dari kedua ujung string
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">" Hello ".trim(); // "Hello"</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">startsWith()</div>
+            <div class="element-desc">
+              Memeriksa apakah string dimulai dengan substring tertentu
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".startsWith("He"); // true</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">endsWith()</div>
+            <div class="element-desc">
+              Memeriksa apakah string diakhiri dengan substring tertentu
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">"Hello".endsWith("lo"); // true</div>
+          </div>
+        </div>
+
+        <!-- Metode Object -->
+        <div class="category">
+          <h2>📦 Metode Object</h2>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.keys()</div>
+            <div class="element-desc">
+              Mengembalikan array dari properti enumerable milik objek
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              Object.keys({a:1, b:2}); // ["a", "b"]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.values()</div>
+            <div class="element-desc">
+              Mengembalikan array dari nilai properti enumerable milik objek
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              Object.values({a:1, b:2}); // [1, 2]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.entries()</div>
+            <div class="element-desc">
+              Mengembalikan array dari pasangan [key, value] milik objek
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              Object.entries({a:1, b:2}); // [["a",1], ["b",2]]
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.assign()</div>
+            <div class="element-desc">
+              Menyalin nilai dari satu atau lebih objek sumber ke objek target
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">
+              Object.assign({}, {a:1}, {b:2}); // {a:1, b:2}
+            </div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.freeze()</div>
+            <div class="element-desc">
+              Membekukan objek, mencegah modifikasi properti baru
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Object.freeze(obj);</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.seal()</div>
+            <div class="element-desc">
+              Menyegel objek, mencegah penambahan/hapus properti
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Object.seal(obj);</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Object.create()</div>
+            <div class="element-desc">
+              Membuat objek baru dengan prototipe yang ditentukan
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Object.create(proto);</div>
+          </div>
+        </div>
+
+        <!-- Fungsi Global -->
+        <div class="category">
+          <h2>🌍 Fungsi Global</h2>
+
+          <div class="element" data-type="global">
+            <div class="element-name">parseInt()</div>
+            <div class="element-desc">
+              Mengurai string dan mengembalikan integer
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">parseInt("10"); // 10</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">parseFloat()</div>
+            <div class="element-desc">
+              Mengurai string dan mengembalikan floating point number
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">parseFloat("10.5"); // 10.5</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">isNaN()</div>
+            <div class="element-desc">
+              Menentukan apakah nilai adalah NaN (Not-a-Number)
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">isNaN("Hello"); // true</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">isFinite()</div>
+            <div class="element-desc">
+              Menentukan apakah nilai adalah bilangan terbatas
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">isFinite(10); // true</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">eval()</div>
+            <div class="element-desc">
+              Mengevaluasi kode JavaScript yang direpresentasikan sebagai string
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">eval("2 + 2"); // 4</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">encodeURI()</div>
+            <div class="element-desc">
+              Mengenkode URI dengan mengganti karakter tertentu
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">
+              encodeURI("https://example.com/hello world");
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">decodeURI()</div>
+            <div class="element-desc">
+              Mendekode URI yang sebelumnya dibuat dengan encodeURI
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">decodeURI(encodedURI);</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">setTimeout()</div>
+            <div class="element-desc">
+              Menjalankan fungsi setelah waktu tunggu yang ditentukan
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">
+              setTimeout(() => console.log("Hello"), 1000);
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">setInterval()</div>
+            <div class="element-desc">
+              Menjalankan fungsi berulang kali dengan jeda waktu tetap
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">
+              setInterval(() => console.log("Tick"), 1000);
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">clearTimeout()</div>
+            <div class="element-desc">
+              Membatalkan timeout yang dibuat dengan setTimeout
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">clearTimeout(timeoutId);</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">clearInterval()</div>
+            <div class="element-desc">
+              Membatalkan interval yang dibuat dengan setInterval
+            </div>
+            <span class="element-type type-global">Fungsi Global</span>
+            <div class="element-example">clearInterval(intervalId);</div>
+          </div>
+        </div>
+
+        <!-- Properti dan Metode Math -->
+        <div class="category">
+          <h2>🔢 Math</h2>
+
+          <div class="element" data-type="property">
+            <div class="element-name">Math.PI</div>
+            <div class="element-desc">
+              Rasio keliling lingkaran terhadap diameternya, sekitar 3.14159
+            </div>
+            <span class="element-type type-property">Properti</span>
+            <div class="element-example">Math.PI; // 3.141592653589793</div>
+          </div>
+
+          <div class="element" data-type="property">
+            <div class="element-name">Math.E</div>
+            <div class="element-desc">
+              Basis logaritma natural, sekitar 2.718
+            </div>
+            <span class="element-type type-property">Properti</span>
+            <div class="element-example">Math.E; // 2.718281828459045</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.abs()</div>
+            <div class="element-desc">
+              Mengembalikan nilai absolut dari angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.abs(-5); // 5</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.round()</div>
+            <div class="element-desc">
+              Mengembalikan nilai pembulatan terdekat dari angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.round(4.7); // 5</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.ceil()</div>
+            <div class="element-desc">
+              Mengembalikan bilangan bulat terkecil lebih besar atau sama dengan
+              angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.ceil(4.2); // 5</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.floor()</div>
+            <div class="element-desc">
+              Mengembalikan bilangan bulat terbesar kurang dari atau sama dengan
+              angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.floor(4.9); // 4</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.random()</div>
+            <div class="element-desc">
+              Mengembalikan angka pseudo-random antara 0 (inklusif) dan 1
+              (eksklusif)
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.random(); // 0.123456789</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.max()</div>
+            <div class="element-desc">
+              Mengembalikan angka terbesar dari nol atau lebih angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.max(1, 3, 2); // 3</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.min()</div>
+            <div class="element-desc">
+              Mengembalikan angka terkecil dari nol atau lebih angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.min(1, 3, 2); // 1</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.pow()</div>
+            <div class="element-desc">
+              Mengembalikan basis dipangkatkan dengan eksponen
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.pow(2, 3); // 8</div>
+          </div>
+
+          <div class="element" data-type="method">
+            <div class="element-name">Math.sqrt()</div>
+            <div class="element-desc">
+              Mengembalikan akar kuadrat dari angka
+            </div>
+            <span class="element-type type-method">Metode</span>
+            <div class="element-example">Math.sqrt(16); // 4</div>
+          </div>
+        </div>
+
+        <!-- ES6+ Features -->
+        <div class="category">
+          <h2>🚀 Fitur ES6+</h2>
+
+          <div class="element" data-type="global">
+            <div class="element-name">let & const</div>
+            <div class="element-desc">
+              Deklarasi variabel dengan scope blok (let bisa diubah, const
+              tetap)
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">let x = 5; const y = 10;</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Arrow Functions</div>
+            <div class="element-desc">
+              Sintaks fungsi yang lebih ringkas dengan binding 'this' yang
+              berbeda
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">const sum = (a, b) => a + b;</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Template Literals</div>
+            <div class="element-desc">
+              String literal yang memungkinkan ekspresi embedded
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">`Hello ${name}!`;</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Destructuring</div>
+            <div class="element-desc">
+              Ekstraksi data dari array atau objek ke variabel terpisah
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">const {name, age} = person;</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Spread Operator</div>
+            <div class="element-desc">
+              Memungkinkan ekspansi elemen iterable seperti array
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">[...arr1, ...arr2];</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Rest Parameters</div>
+            <div class="element-desc">
+              Merepresentasikan argumen tak terbatas sebagai array
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">function f(...args) { }</div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Default Parameters</div>
+            <div class="element-desc">Nilai default untuk parameter fungsi</div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">
+              function greet(name = "Guest") { }
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Classes</div>
+            <div class="element-desc">
+              Sintaks berbasis class untuk pembuatan objek dan pewarisan
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">
+              class Person { constructor(name) { this.name = name; } }
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Modules</div>
+            <div class="element-desc">
+              Mengimpor dan mengekspor kode antara file JavaScript
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">
+              import { func } from './module.js';
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">Promises</div>
+            <div class="element-desc">
+              Objek yang merepresentasikan penyelesaian operasi asinkron
+            </div>
+            <span class="element-type type-global">Fitur ES6</span>
+            <div class="element-example">
+              fetch(url).then(response => response.json());
+            </div>
+          </div>
+
+          <div class="element" data-type="global">
+            <div class="element-name">async/await</div>
+            <div class="element-desc">
+              Sintaks untuk bekerja dengan promises secara sinkron
+            </div>
+            <span class="element-type type-global">Fitur ES7</span>
+            <div class="element-example">
+              async function getData() { const data = await fetch(url); }
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Daftar ini mencakup elemen JavaScript ES6+ yang umum digunakan.
+          JavaScript terus berkembang dengan fitur baru yang ditambahkan secara
+          berkala.
+        </p>
+        <p>
+          Total: <span id="elementCount">100+</span> elemen JavaScript yang
+          tercantum
+        </p>
+      </footer>
+    </div>
+
+    <script>
+      // Hitung jumlah elemen dan kategori
+      document.addEventListener("DOMContentLoaded", function () {
+        const categories = document.querySelectorAll(".category");
+        const elements = document.querySelectorAll(".element");
+
+        document.getElementById("totalElements").textContent = elements.length;
+        document.getElementById("totalCats").textContent = categories.length;
+        document.getElementById("elementCount").textContent = elements.length;
+
+        // Fungsi pencarian
+        const searchInput = document.getElementById("searchInput");
+        searchInput.addEventListener("keyup", function () {
+          const searchTerm = searchInput.value.toLowerCase();
+          const elements = document.querySelectorAll(".element");
+
+          elements.forEach((element) => {
+            const elementName = element
+              .querySelector(".element-name")
+              .textContent.toLowerCase();
+            const elementDesc = element
+              .querySelector(".element-desc")
+              .textContent.toLowerCase();
+
+            if (
+              elementName.includes(searchTerm) ||
+              elementDesc.includes(searchTerm)
+            ) {
+              element.style.display = "block";
+              element.parentElement.style.display = "block";
+            } else {
+              element.style.display = "none";
+            }
+          });
+
+          // Sembunyikan kategori yang tidak memiliki elemen yang terlihat
+          const categories = document.querySelectorAll(".category");
+          categories.forEach((category) => {
+            const visibleElements = category.querySelectorAll(
+              '.element[style="display: block"]'
+            );
+            if (visibleElements.length === 0) {
+              category.style.display = "none";
+            } else {
+              category.style.display = "block";
+            }
+          });
+        });
+
+        // Filter berdasarkan tipe
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            // Hapus kelas active dari semua tombol
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            // Tambahkan kelas active ke tombol yang diklik
+            this.classList.add("active");
+
+            const filter = this.getAttribute("data-filter");
+            const elements = document.querySelectorAll(".element");
+
+            elements.forEach((element) => {
+              if (filter === "all") {
+                element.style.display = "block";
+              } else {
+                if (element.getAttribute("data-type") === filter) {
+                  element.style.display = "block";
+                } else {
+                  element.style.display = "none";
+                }
+              }
+            });
+
+            // Sembunyikan kategori yang tidak memiliki elemen yang terlihat
+            const categories = document.querySelectorAll(".category");
+            categories.forEach((category) => {
+              const visibleElements = category.querySelectorAll(
+                '.element[style="display: block"]'
+              );
+              if (visibleElements.length === 0) {
+                category.style.display = "none";
+              } else {
+                category.style.display = "block";
+              }
+            });
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

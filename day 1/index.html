@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Lengkap Elemen HTML dan Atributnya</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background-color: #f5f7fa;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 40px;
+        padding: 20px;
+        background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+        color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .content {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 20px;
+      }
+
+      .category {
+        background-color: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+
+      .category:hover {
+        transform: translateY(-5px);
+      }
+
+      .category h2 {
+        color: #2575fc;
+        border-bottom: 2px solid #f0f0f0;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+      }
+
+      .element {
+        margin-bottom: 15px;
+        padding: 10px;
+        background-color: #f8f9fa;
+        border-radius: 5px;
+      }
+
+      .element-name {
+        font-weight: bold;
+        color: #2c3e50;
+        margin-bottom: 5px;
+      }
+
+      .attributes {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+      }
+
+      .attribute {
+        display: inline-block;
+        background-color: #e1f0fa;
+        padding: 2px 6px;
+        border-radius: 3px;
+        margin: 2px;
+        font-family: monospace;
+        font-size: 0.85rem;
+      }
+
+      .global-attributes {
+        background-color: #e8f4fd;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 30px;
+      }
+
+      .global-attributes h2 {
+        color: #2575fc;
+        margin-bottom: 15px;
+      }
+
+      footer {
+        text-align: center;
+        margin-top: 40px;
+        padding: 20px;
+        color: #7f8c8d;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .content {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>Daftar Lengkap Elemen HTML</h1>
+        <p class="subtitle">Beserta Atribut-Atributnya</p>
+      </header>
+
+      <div class="content">
+        <!-- Struktur Dokumen -->
+        <div class="category">
+          <h2>Struktur Dokumen</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;html&gt;</div>
+            <div class="attributes">
+              <span class="attribute">lang</span>
+              <span class="attribute">manifest</span>
+              <span class="attribute">xmlns</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;head&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;title&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;body&gt;</div>
+            <div class="attributes">
+              <span class="attribute">onafterprint</span>
+              <span class="attribute">onbeforeprint</span>
+              <span class="attribute">onbeforeunload</span>
+              <span class="attribute">onhashchange</span>
+              <span class="attribute">onlanguagechange</span>
+              <span class="attribute">onmessage</span>
+              <span class="attribute">onoffline</span>
+              <span class="attribute">ononline</span>
+              <span class="attribute">onpagehide</span>
+              <span class="attribute">onpageshow</span>
+              <span class="attribute">onpopstate</span>
+              <span class="attribute">onresize</span>
+              <span class="attribute">onstorage</span>
+              <span class="attribute">onunload</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Metadata -->
+        <div class="category">
+          <h2>Metadata</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;meta&gt;</div>
+            <div class="attributes">
+              <span class="attribute">charset</span>
+              <span class="attribute">content</span>
+              <span class="attribute">http-equiv</span>
+              <span class="attribute">name</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;link&gt;</div>
+            <div class="attributes">
+              <span class="attribute">crossorigin</span>
+              <span class="attribute">href</span>
+              <span class="attribute">hreflang</span>
+              <span class="attribute">media</span>
+              <span class="attribute">referrerpolicy</span>
+              <span class="attribute">rel</span>
+              <span class="attribute">sizes</span>
+              <span class="attribute">title</span>
+              <span class="attribute">type</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;style&gt;</div>
+            <div class="attributes">
+              <span class="attribute">media</span>
+              <span class="attribute">type</span>
+              <span class="attribute">scoped</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;base&gt;</div>
+            <div class="attributes">
+              <span class="attribute">href</span>
+              <span class="attribute">target</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Konten Sectioning -->
+        <div class="category">
+          <h2>Konten Sectioning</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;header&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;nav&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;main&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;article&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;section&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;aside&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;footer&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;address&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+        </div>
+
+        <!-- Konten Teks -->
+        <div class="category">
+          <h2>Konten Teks</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;h1&gt; - &lt;h6&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;p&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;br&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;hr&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;pre&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;blockquote&gt;</div>
+            <div class="attributes">
+              <span class="attribute">cite</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;q&gt;</div>
+            <div class="attributes">
+              <span class="attribute">cite</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;cite&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;code&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;var&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;samp&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;kbd&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;abbr&gt;</div>
+            <div class="attributes">
+              <span class="attribute">title</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;mark&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;ruby&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;rt&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;rp&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;bdi&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;bdo&gt;</div>
+            <div class="attributes">
+              <span class="attribute">dir</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;span&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;wbr&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+        </div>
+
+        <!-- Konten Tertanam -->
+        <div class="category">
+          <h2>Konten Tertanam</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;img&gt;</div>
+            <div class="attributes">
+              <span class="attribute">alt</span>
+              <span class="attribute">crossorigin</span>
+              <span class="attribute">height</span>
+              <span class="attribute">ismap</span>
+              <span class="attribute">loading</span>
+              <span class="attribute">longdesc</span>
+              <span class="attribute">referrerpolicy</span>
+              <span class="attribute">sizes</span>
+              <span class="attribute">src</span>
+              <span class="attribute">srcset</span>
+              <span class="attribute">usemap</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;iframe&gt;</div>
+            <div class="attributes">
+              <span class="attribute">allow</span>
+              <span class="attribute">allowfullscreen</span>
+              <span class="attribute">allowpaymentrequest</span>
+              <span class="attribute">height</span>
+              <span class="attribute">loading</span>
+              <span class="attribute">name</span>
+              <span class="attribute">referrerpolicy</span>
+              <span class="attribute">sandbox</span>
+              <span class="attribute">src</span>
+              <span class="attribute">srcdoc</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;embed&gt;</div>
+            <div class="attributes">
+              <span class="attribute">height</span>
+              <span class="attribute">src</span>
+              <span class="attribute">type</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;object&gt;</div>
+            <div class="attributes">
+              <span class="attribute">data</span>
+              <span class="attribute">form</span>
+              <span class="attribute">height</span>
+              <span class="attribute">name</span>
+              <span class="attribute">type</span>
+              <span class="attribute">usemap</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;param&gt;</div>
+            <div class="attributes">
+              <span class="attribute">name</span>
+              <span class="attribute">value</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;video&gt;</div>
+            <div class="attributes">
+              <span class="attribute">autoplay</span>
+              <span class="attribute">controls</span>
+              <span class="attribute">crossorigin</span>
+              <span class="attribute">height</span>
+              <span class="attribute">loop</span>
+              <span class="attribute">muted</span>
+              <span class="attribute">poster</span>
+              <span class="attribute">preload</span>
+              <span class="attribute">src</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;audio&gt;</div>
+            <div class="attributes">
+              <span class="attribute">autoplay</span>
+              <span class="attribute">controls</span>
+              <span class="attribute">crossorigin</span>
+              <span class="attribute">loop</span>
+              <span class="attribute">muted</span>
+              <span class="attribute">preload</span>
+              <span class="attribute">src</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;source&gt;</div>
+            <div class="attributes">
+              <span class="attribute">media</span>
+              <span class="attribute">sizes</span>
+              <span class="attribute">src</span>
+              <span class="attribute">srcset</span>
+              <span class="attribute">type</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;track&gt;</div>
+            <div class="attributes">
+              <span class="attribute">default</span>
+              <span class="attribute">kind</span>
+              <span class="attribute">label</span>
+              <span class="attribute">src</span>
+              <span class="attribute">srclang</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;map&gt;</div>
+            <div class="attributes">
+              <span class="attribute">name</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;area&gt;</div>
+            <div class="attributes">
+              <span class="attribute">alt</span>
+              <span class="attribute">coords</span>
+              <span class="attribute">download</span>
+              <span class="attribute">href</span>
+              <span class="attribute">hreflang</span>
+              <span class="attribute">media</span>
+              <span class="attribute">referrerpolicy</span>
+              <span class="attribute">rel</span>
+              <span class="attribute">shape</span>
+              <span class="attribute">target</span>
+              <span class="attribute">type</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;picture&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;canvas&gt;</div>
+            <div class="attributes">
+              <span class="attribute">height</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Scripting -->
+        <div class="category">
+          <h2>Scripting</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;script&gt;</div>
+            <div class="attributes">
+              <span class="attribute">async</span>
+              <span class="attribute">crossorigin</span>
+              <span class="attribute">defer</span>
+              <span class="attribute">integrity</span>
+              <span class="attribute">nomodule</span>
+              <span class="attribute">referrerpolicy</span>
+              <span class="attribute">src</span>
+              <span class="attribute">type</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;noscript&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+        </div>
+
+        <!-- Tabel -->
+        <div class="category">
+          <h2>Tabel</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;table&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;caption&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;colgroup&gt;</div>
+            <div class="attributes">
+              <span class="attribute">span</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;col&gt;</div>
+            <div class="attributes">
+              <span class="attribute">span</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;tbody&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;thead&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;tfoot&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;tr&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;td&gt;</div>
+            <div class="attributes">
+              <span class="attribute">colspan</span>
+              <span class="attribute">headers</span>
+              <span class="attribute">rowspan</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;th&gt;</div>
+            <div class="attributes">
+              <span class="attribute">abbr</span>
+              <span class="attribute">colspan</span>
+              <span class="attribute">headers</span>
+              <span class="attribute">rowspan</span>
+              <span class="attribute">scope</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Formulir -->
+        <div class="category">
+          <h2>Formulir</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;form&gt;</div>
+            <div class="attributes">
+              <span class="attribute">accept-charset</span>
+              <span class="attribute">action</span>
+              <span class="attribute">autocomplete</span>
+              <span class="attribute">enctype</span>
+              <span class="attribute">method</span>
+              <span class="attribute">name</span>
+              <span class="attribute">novalidate</span>
+              <span class="attribute">target</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;fieldset&gt;</div>
+            <div class="attributes">
+              <span class="attribute">disabled</span>
+              <span class="attribute">form</span>
+              <span class="attribute">name</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;legend&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;label&gt;</div>
+            <div class="attributes">
+              <span class="attribute">for</span>
+              <span class="attribute">form</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;input&gt;</div>
+            <div class="attributes">
+              <span class="attribute">accept</span>
+              <span class="attribute">alt</span>
+              <span class="attribute">autocomplete</span>
+              <span class="attribute">autofocus</span>
+              <span class="attribute">capture</span>
+              <span class="attribute">checked</span>
+              <span class="attribute">dirname</span>
+              <span class="attribute">disabled</span>
+              <span class="attribute">form</span>
+              <span class="attribute">formaction</span>
+              <span class="attribute">formenctype</span>
+              <span class="attribute">formmethod</span>
+              <span class="attribute">formnovalidate</span>
+              <span class="attribute">formtarget</span>
+              <span class="attribute">height</span>
+              <span class="attribute">list</span>
+              <span class="attribute">max</span>
+              <span class="attribute">maxlength</span>
+              <span class="attribute">min</span>
+              <span class="attribute">minlength</span>
+              <span class="attribute">multiple</span>
+              <span class="attribute">name</span>
+              <span class="attribute">pattern</span>
+              <span class="attribute">placeholder</span>
+              <span class="attribute">readonly</span>
+              <span class="attribute">required</span>
+              <span class="attribute">size</span>
+              <span class="attribute">src</span>
+              <span class="attribute">step</span>
+              <span class="attribute">type</span>
+              <span class="attribute">value</span>
+              <span class="attribute">width</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;button&gt;</div>
+            <div class="attributes">
+              <span class="attribute">autofocus</span>
+              <span class="attribute">disabled</span>
+              <span class="attribute">form</span>
+              <span class="attribute">formaction</span>
+              <span class="attribute">formenctype</span>
+              <span class="attribute">formmethod</span>
+              <span class="attribute">formnovalidate</span>
+              <span class="attribute">formtarget</span>
+              <span class="attribute">name</span>
+              <span class="attribute">type</span>
+              <span class="attribute">value</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;select&gt;</div>
+            <div class="attributes">
+              <span class="attribute">autocomplete</span>
+              <span class="attribute">autofocus</span>
+              <span class="attribute">disabled</span>
+              <span class="attribute">form</span>
+              <span class="attribute">multiple</span>
+              <span class="attribute">name</span>
+              <span class="attribute">required</span>
+              <span class="attribute">size</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;datalist&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;optgroup&gt;</div>
+            <div class="attributes">
+              <span class="attribute">disabled</span>
+              <span class="attribute">label</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;option&gt;</div>
+            <div class="attributes">
+              <span class="attribute">disabled</span>
+              <span class="attribute">label</span>
+              <span class="attribute">selected</span>
+              <span class="attribute">value</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;textarea&gt;</div>
+            <div class="attributes">
+              <span class="attribute">autocomplete</span>
+              <span class="attribute">autofocus</span>
+              <span class="attribute">cols</span>
+              <span class="attribute">dirname</span>
+              <span class="attribute">disabled</span>
+              <span class="attribute">form</span>
+              <span class="attribute">maxlength</span>
+              <span class="attribute">minlength</span>
+              <span class="attribute">name</span>
+              <span class="attribute">placeholder</span>
+              <span class="attribute">readonly</span>
+              <span class="attribute">required</span>
+              <span class="attribute">rows</span>
+              <span class="attribute">wrap</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;output&gt;</div>
+            <div class="attributes">
+              <span class="attribute">for</span>
+              <span class="attribute">form</span>
+              <span class="attribute">name</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;progress&gt;</div>
+            <div class="attributes">
+              <span class="attribute">max</span>
+              <span class="attribute">value</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;meter&gt;</div>
+            <div class="attributes">
+              <span class="attribute">high</span>
+              <span class="attribute">low</span>
+              <span class="attribute">max</span>
+              <span class="attribute">min</span>
+              <span class="attribute">optimum</span>
+              <span class="attribute">value</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Konten Interaktif -->
+        <div class="category">
+          <h2>Konten Interaktif</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;details&gt;</div>
+            <div class="attributes">
+              <span class="attribute">open</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;summary&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;dialog&gt;</div>
+            <div class="attributes">
+              <span class="attribute">open</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Components -->
+        <div class="category">
+          <h2>Web Components</h2>
+
+          <div class="element">
+            <div class="element-name">&lt;slot&gt;</div>
+            <div class="attributes">
+              <span class="attribute">name</span>
+            </div>
+          </div>
+
+          <div class="element">
+            <div class="element-name">&lt;template&gt;</div>
+            <div class="attributes">Tidak memiliki atribut khusus</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="global-attributes">
+        <h2>Atribut Global</h2>
+        <p>Atribut global dapat digunakan pada hampir semua elemen HTML:</p>
+        <div class="attributes">
+          <span class="attribute">accesskey</span>
+          <span class="attribute">autocapitalize</span>
+          <span class="attribute">class</span>
+          <span class="attribute">contenteditable</span>
+          <span class="attribute">data-*</span>
+          <span class="attribute">dir</span>
+          <span class="attribute">draggable</span>
+          <span class="attribute">enterkeyhint</span>
+          <span class="attribute">hidden</span>
+          <span class="attribute">id</span>
+          <span class="attribute">inputmode</span>
+          <span class="attribute">is</span>
+          <span class="attribute">itemid</span>
+          <span class="attribute">itemprop</span>
+          <span class="attribute">itemref</span>
+          <span class="attribute">itemscope</span>
+          <span class="attribute">itemtype</span>
+          <span class="attribute">lang</span>
+          <span class="attribute">nonce</span>
+          <span class="attribute">slot</span>
+          <span class="attribute">spellcheck</span>
+          <span class="attribute">style</span>
+          <span class="attribute">tabindex</span>
+          <span class="attribute">title</span>
+          <span class="attribute">translate</span>
+        </div>
+      </div>
+
+      <footer>
+        <p>
+          Daftar ini mencakup elemen HTML5 yang umum digunakan. Beberapa elemen
+          mungkin memiliki atribut tambahan yang spesifik untuk penggunaan
+          tertentu.
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
