@@ -3,15 +3,194 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <meta
+      name="description"
+      content="LycosLabs - Innovative programming and technology solutions for modern businesses"
+    />
+    <meta
+      name="keywords"
+      content="web development, mobile apps, software engineering, technology consulting"
+    />
+    <title>LycosLabs - Programming & Technology Solutions</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div>
-      <ul>
-        <li><a href="day 1/html.html" target="_blank">HTML</a></li>
-        <li><a href="day 2/css.html" target="_blank">CSS</a></li>
-        <li><a href="day 3/javascript.html" target="_blank">JavaScript</a></li>
-      </ul>
-    </div>
+    <!-- Improved Navbar -->
+    <nav id="navbar">
+      <div class="nav-container">
+        <a href="#home" class="logo">
+          <div class="logo-icon">
+            <img
+              src="https://raw.githubusercontent.com/VindarKJY/Assets/refs/heads/main/LOGO_NO.BG-removebg-preview%20(1).png"
+              alt="lycos-logo"
+            />
+          </div>
+          LycosLabs
+        </a>
+
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#portfolio">Portfolio</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="floating-shape all-shape shape1"></div>
+      <div class="floating-shape all-shape shape2"></div>
+      <div class="floating-shape all-shape shape3"></div>
+      <div class="floating-shape all-shape shape4"></div>
+      <div class="hero-content">
+        <!-- Style 4: Glitch Effect -->
+        <div class="typing-4">
+          <span class="glitch-text" data-text="" id="glitchText"></span>
+        </div>
+        <p>
+          Innovating the Future with Cutting-Edge Programming & Technology
+          Solutions
+        </p>
+        <a href="#contact" class="cta-button">Get Started</a>
+        <a href="#portfolio" class="cta-button">Our Work</a>
+      </div>
+    </section>   
+    
+    <!-- About Section -->
+    <section class="section about" id="about">
+      <h2 class="section-title fade-in">About Us</h2>
+      <div class="about-content">
+        <div class="about-text fade-in">
+          <h3>Leading the Digital Revolution</h3>
+          <p>
+            LycosLabs is a cutting-edge technology company specializing in
+            programming solutions and innovative software development. We
+            combine expertise in modern programming languages with creative
+            problem-solving to deliver exceptional results.
+          </p>
+          <p>
+            Our team of skilled developers and technology enthusiasts is
+            dedicated to pushing the boundaries of what's possible in the
+            digital world. We believe in creating solutions that are not only
+            functional but also elegant and user-friendly.
+          </p>
+        </div>
+        <div class="about-stats fade-in">
+          <div class="stat-card">
+            <div class="stat-number" data-target="150">0</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="50">0</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="10">0</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" data-target="25">0</div>
+            <div class="stat-label">Team Members</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+      <h2 class="section-titlee fade-in">Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card fade-in">
+          <div class="service-icon">💻</div>
+          <h3>Web Development</h3>
+          <p>
+            Custom web applications built with modern frameworks and
+            technologies. Responsive, fast, and user-friendly solutions.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">📱</div>
+          <h3>Mobile Development</h3>
+          <p>
+            Native and cross-platform mobile applications for iOS and Android.
+            Delivering seamless user experiences.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🔧</div>
+          <h3>Software Engineering</h3>
+          <p>
+            End-to-end software solutions from design to deployment. Scalable
+            architecture and robust code.
+          </p>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-icon">🚀</div>
+          <h3>Technology Consulting</h3>
+          <p>
+            Expert guidance on technology stacks, architecture decisions, and
+            digital transformation strategies.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="section portfolio" id="portfolio">
+      <h2 class="section-title fade-in">Our Portfolio</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item fade-in">
+          <div class="portfolio-image">🎨</div>
+          <div class="portfolio-content">
+            <h3>E-Commerce Platform</h3>
+            <p>Modern online shopping experience with advanced features</p>
+          </div>
+        </div>
+        <div class="portfolio-item fade-in">
+          <div class="portfolio-image">📊</div>
+          <div class="portfolio-content">
+            <h3>Analytics Dashboard</h3>
+            <p>Real-time data visualization and business intelligence</p>
+          </div>
+        </div>
+        <div class="portfolio-item fade-in">
+          <div class="portfolio-image">🌐</div>
+          <div class="portfolio-content">
+            <h3>Enterprise Solution</h3>
+            <p>Scalable system for large organizations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+      <div class="footer-content">
+        <h2>LycosLabs</h2>
+        <p>Transforming ideas into digital reality</p>
+        <div class="footer-links">
+          <a href="#home" class="footer-link">Home</a>
+          <a href="#about" class="footer-link">About</a>
+          <a href="#services" class="footer-link">Services</a>
+          <a href="#portfolio" class="footer-link">Portfolio</a>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 LycosLabs. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+    <script src="index.js"></script>
   </body>
 </html>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Daftar Lengkap Properti CSS</title>
+    <title>Complete CSS Properties Reference</title>
     <style>
       :root {
         --primary: #4361ee;
@@ -28,11 +28,34 @@
         color: var(--dark);
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
         padding: 20px;
+        scroll-behavior: smooth;
+        animation: fadeInBody 0.8s ease-in;
+      }
+
+      @keyframes fadeInBody {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
+        animation: slideIn 0.6s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       header {
@@ -47,6 +70,44 @@
         color: white;
         border-radius: 15px;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        animation: headerPulse 3s ease-in-out infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      @keyframes headerPulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.01);
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       h1 {
@@ -94,13 +155,79 @@
         border-radius: 15px;
         padding: 25px;
         box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         border-left: 5px solid var(--primary);
+        animation: fadeInUp 0.6s ease-out backwards;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .category::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(67, 97, 238, 0.1),
+          transparent
+        );
+        transition: left 0.5s;
+      }
+
+      .category:hover::after {
+        left: 100%;
+      }
+
+      .category:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .category:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .category:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .category:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .category:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .category:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .category:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+      .category:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+      .category:nth-child(9) {
+        animation-delay: 0.9s;
+      }
+      .category:nth-child(10) {
+        animation-delay: 1s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .category:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 25px rgba(0, 0, 0, 0.1);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        border-left-width: 8px;
       }
 
       .category h2 {
@@ -122,11 +249,21 @@
         padding: 15px;
         background-color: #f8f9fa;
         border-radius: 10px;
-        transition: all 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        border: 2px solid transparent;
       }
 
       .property:hover {
         background-color: #e9ecef;
+        transform: translateX(5px);
+        border-color: var(--primary);
+        box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+      }
+
+      .property:active {
+        transform: translateX(3px) scale(0.98);
       }
 
       .property-name {
@@ -156,6 +293,37 @@
         border-radius: 4px;
         margin: 2px;
         font-size: 0.8rem;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .value::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.3);
+        transform: translate(-50%, -50%);
+        transition: width 0.3s, height 0.3s;
+      }
+
+      .value:hover {
+        transform: scale(1.1) translateY(-2px);
+        box-shadow: 0 4px 8px rgba(72, 149, 239, 0.4);
+      }
+
+      .value:hover::before {
+        width: 100px;
+        height: 100px;
+      }
+
+      .value:active {
+        transform: scale(0.95);
       }
 
       .stats {
@@ -166,6 +334,18 @@
         border-radius: 15px;
         margin-bottom: 30px;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        animation: statsSlideIn 0.8s ease-out;
+      }
+
+      @keyframes statsSlideIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       .stat-item {
@@ -177,6 +357,21 @@
         font-size: 2.5rem;
         font-weight: bold;
         color: var(--primary);
+        transition: all 0.3s ease;
+        display: inline-block;
+      }
+
+      .stat-number:hover {
+        transform: scale(1.1);
+        color: var(--secondary);
+      }
+
+      .stat-item {
+        transition: all 0.3s ease;
+      }
+
+      .stat-item:hover {
+        transform: translateY(-5px);
       }
 
       .stat-label {
@@ -217,25 +412,33 @@
   <body>
     <div class="container">
       <header>
-        <h1>Daftar Lengkap Properti CSS</h1>
+        <h1>Complete CSS Properties Reference</h1>
         <p class="subtitle">
-          Kumpulan semua properti CSS modern beserta penjelasan dan nilai yang
-          dapat digunakan
+          Comprehensive collection of modern CSS properties with explanations
+          and available values
         </p>
+        <div class="search-box">
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="🔍 Search CSS properties..."
+            autocomplete="off"
+          />
+        </div>
       </header>
 
       <div class="stats">
         <div class="stat-item">
           <div class="stat-number" id="totalProps">0</div>
-          <div class="stat-label">Total Properti</div>
+          <div class="stat-label">Total Properties</div>
         </div>
         <div class="stat-item">
           <div class="stat-number" id="totalCats">0</div>
-          <div class="stat-label">Kategori</div>
+          <div class="stat-label">Categories</div>
         </div>
         <div class="stat-item">
           <div class="stat-number">CSS3</div>
-          <div class="stat-label">Versi Terbaru</div>
+          <div class="stat-label">Latest Version</div>
         </div>
       </div>
 
@@ -247,8 +450,8 @@
           <div class="property">
             <div class="property-name">display</div>
             <div class="property-desc">
-              Menentukan bagaimana elemen ditampilkan (block, inline, flex,
-              grid, dll)
+              Determines how an element is displayed (block, inline, flex, grid,
+              etc.)
             </div>
             <div class="property-values">
               <span class="value">block</span>
@@ -261,7 +464,9 @@
 
           <div class="property">
             <div class="property-name">position</div>
-            <div class="property-desc">Menentukan metode penempatan elemen</div>
+            <div class="property-desc">
+              Determines the positioning method for an element
+            </div>
             <div class="property-values">
               <span class="value">static</span>
               <span class="value">relative</span>
@@ -273,7 +478,9 @@
 
           <div class="property">
             <div class="property-name">width / height</div>
-            <div class="property-desc">Mengatur lebar dan tinggi elemen</div>
+            <div class="property-desc">
+              Sets the width and height of an element
+            </div>
             <div class="property-values">
               <span class="value">auto</span>
               <span class="value">px</span>
@@ -285,7 +492,7 @@
           <div class="property">
             <div class="property-name">margin / padding</div>
             <div class="property-desc">
-              Mengatur jarak luar (margin) dan jarak dalam (padding)
+              Sets outer spacing (margin) and inner spacing (padding)
             </div>
             <div class="property-values">
               <span class="value">auto</span>
@@ -298,7 +505,7 @@
           <div class="property">
             <div class="property-name">box-sizing</div>
             <div class="property-desc">
-              Menentukan bagaimana lebar dan tinggi dihitung
+              Determines how width and height are calculated
             </div>
             <div class="property-values">
               <span class="value">content-box</span>
@@ -309,7 +516,7 @@
           <div class="property">
             <div class="property-name">overflow</div>
             <div class="property-desc">
-              Mengatur perilaku konten yang melebihi elemen
+              Controls behavior of content that overflows an element
             </div>
             <div class="property-values">
               <span class="value">visible</span>
@@ -326,7 +533,7 @@
 
           <div class="property">
             <div class="property-name">flex-direction</div>
-            <div class="property-desc">Menentukan arah item flex</div>
+            <div class="property-desc">Sets the direction of flex items</div>
             <div class="property-values">
               <span class="value">row</span>
               <span class="value">row-reverse</span>
@@ -338,7 +545,7 @@
           <div class="property">
             <div class="property-name">justify-content</div>
             <div class="property-desc">
-              Mengatur penjajaran item secara horizontal
+              Aligns flex items along the main axis (horizontal)
             </div>
             <div class="property-values">
               <span class="value">flex-start</span>
@@ -352,7 +559,7 @@
           <div class="property">
             <div class="property-name">align-items</div>
             <div class="property-desc">
-              Mengatur penjajaran item secara vertikal
+              Aligns flex items along the cross axis (vertical)
             </div>
             <div class="property-values">
               <span class="value">stretch</span>
@@ -366,7 +573,7 @@
           <div class="property">
             <div class="property-name">flex-wrap</div>
             <div class="property-desc">
-              Menentukan apakah item flex dapat dibungkus
+              Determines whether flex items can wrap to new lines
             </div>
             <div class="property-values">
               <span class="value">nowrap</span>
@@ -378,7 +585,7 @@
           <div class="property">
             <div class="property-name">flex-grow</div>
             <div class="property-desc">
-              Menentukan kemampuan item untuk tumbuh
+              Determines the ability of a flex item to grow
             </div>
             <div class="property-values">
               <span class="value">0</span>
@@ -390,7 +597,7 @@
           <div class="property">
             <div class="property-name">flex-shrink</div>
             <div class="property-desc">
-              Menentukan kemampuan item untuk menyusut
+              Determines the ability of a flex item to shrink
             </div>
             <div class="property-values">
               <span class="value">0</span>
@@ -405,7 +612,7 @@
 
           <div class="property">
             <div class="property-name">grid-template-columns</div>
-            <div class="property-desc">Mendefinisikan kolom dalam grid</div>
+            <div class="property-desc">Defines the columns in a grid</div>
             <div class="property-values">
               <span class="value">px</span>
               <span class="value">%</span>
@@ -416,7 +623,7 @@
 
           <div class="property">
             <div class="property-name">grid-template-rows</div>
-            <div class="property-desc">Mendefinisikan baris dalam grid</div>
+            <div class="property-desc">Defines the rows in a grid</div>
             <div class="property-values">
               <span class="value">px</span>
               <span class="value">%</span>
@@ -427,7 +634,7 @@
 
           <div class="property">
             <div class="property-name">grid-gap</div>
-            <div class="property-desc">Mengatur jarak antar item grid</div>
+            <div class="property-desc">Sets the gap between grid items</div>
             <div class="property-values">
               <span class="value">px</span>
               <span class="value">%</span>
@@ -437,7 +644,9 @@
 
           <div class="property">
             <div class="property-name">grid-column / grid-row</div>
-            <div class="property-desc">Menentukan posisi item dalam grid</div>
+            <div class="property-desc">
+              Specifies the position of an item in the grid
+            </div>
             <div class="property-values">
               <span class="value">span</span>
               <span class="value">1 / 3</span>
@@ -446,9 +655,9 @@
 
           <div class="property">
             <div class="property-name">grid-area</div>
-            <div class="property-desc">Menentukan area grid untuk item</div>
+            <div class="property-desc">Specifies the grid area for an item</div>
             <div class="property-values">
-              <span class="value">nama area</span>
+              <span class="value">area name</span>
               <span class="value"
                 >row-start / col-start / row-end / col-end</span
               >
@@ -462,9 +671,7 @@
 
           <div class="property">
             <div class="property-name">font-family</div>
-            <div class="property-desc">
-              Menentukan jenis font yang digunakan
-            </div>
+            <div class="property-desc">Specifies the font family to use</div>
             <div class="property-values">
               <span class="value">Arial</span>
               <span class="value">"Times New Roman"</span>
@@ -474,7 +681,7 @@
 
           <div class="property">
             <div class="property-name">font-size</div>
-            <div class="property-desc">Mengatur ukuran font</div>
+            <div class="property-desc">Sets the font size</div>
             <div class="property-values">
               <span class="value">px</span>
               <span class="value">em</span>
@@ -485,7 +692,7 @@
 
           <div class="property">
             <div class="property-name">font-weight</div>
-            <div class="property-desc">Mengatur ketebalan font</div>
+            <div class="property-desc">Sets the font weight (thickness)</div>
             <div class="property-values">
               <span class="value">normal</span>
               <span class="value">bold</span>
@@ -495,7 +702,7 @@
 
           <div class="property">
             <div class="property-name">text-align</div>
-            <div class="property-desc">Mengatur perataan teks</div>
+            <div class="property-desc">Sets text alignment</div>
             <div class="property-values">
               <span class="value">left</span>
               <span class="value">right</span>
@@ -506,7 +713,7 @@
 
           <div class="property">
             <div class="property-name">line-height</div>
-            <div class="property-desc">Mengatur tinggi baris teks</div>
+            <div class="property-desc">Sets the line height of text</div>
             <div class="property-values">
               <span class="value">normal</span>
               <span class="value">1.5</span>
@@ -516,7 +723,7 @@
 
           <div class="property">
             <div class="property-name">letter-spacing</div>
-            <div class="property-desc">Mengatur jarak antar huruf</div>
+            <div class="property-desc">Sets the spacing between letters</div>
             <div class="property-values">
               <span class="value">normal</span>
               <span class="value">2px</span>
@@ -527,22 +734,22 @@
 
         <!-- Color & Background -->
         <div class="category">
-          <h2>🎨 Warna & Latar Belakang</h2>
+          <h2>🎨 Color & Background</h2>
 
           <div class="property">
             <div class="property-name">color</div>
-            <div class="property-desc">Mengatur warna teks</div>
+            <div class="property-desc">Sets the text color</div>
             <div class="property-values">
               <span class="value">#hex</span>
               <span class="value">rgb()</span>
               <span class="value">rgba()</span>
-              <span class="value">nama warna</span>
+              <span class="value">color name</span>
             </div>
           </div>
 
           <div class="property">
             <div class="property-name">background-color</div>
-            <div class="property-desc">Mengatur warna latar belakang</div>
+            <div class="property-desc">Sets the background color</div>
             <div class="property-values">
               <span class="value">#hex</span>
               <span class="value">rgb()</span>
@@ -553,7 +760,7 @@
 
           <div class="property">
             <div class="property-name">background-image</div>
-            <div class="property-desc">Mengatur gambar latar belakang</div>
+            <div class="property-desc">Sets the background image</div>
             <div class="property-values">
               <span class="value">url()</span>
               <span class="value">linear-gradient()</span>
@@ -564,7 +771,7 @@
           <div class="property">
             <div class="property-name">background-size</div>
             <div class="property-desc">
-              Mengatur ukuran gambar latar belakang
+              Sets the size of the background image
             </div>
             <div class="property-values">
               <span class="value">cover</span>
@@ -576,7 +783,7 @@
           <div class="property">
             <div class="property-name">background-position</div>
             <div class="property-desc">
-              Mengatur posisi gambar latar belakang
+              Sets the position of the background image
             </div>
             <div class="property-values">
               <span class="value">top</span>
@@ -588,7 +795,9 @@
 
           <div class="property">
             <div class="property-name">opacity</div>
-            <div class="property-desc">Mengatur transparansi elemen</div>
+            <div class="property-desc">
+              Sets the opacity (transparency) of an element
+            </div>
             <div class="property-values">
               <span class="value">0</span>
               <span class="value">0.5</span>
@@ -603,9 +812,7 @@
 
           <div class="property">
             <div class="property-name">border</div>
-            <div class="property-desc">
-              Mengatur semua properti border sekaligus
-            </div>
+            <div class="property-desc">Sets all border properties at once</div>
             <div class="property-values">
               <span class="value">1px solid #000</span>
             </div>
@@ -613,7 +820,9 @@
 
           <div class="property">
             <div class="property-name">border-radius</div>
-            <div class="property-desc">Mengatur sudut lengkung border</div>
+            <div class="property-desc">
+              Sets the border radius (rounded corners)
+            </div>
             <div class="property-values">
               <span class="value">px</span>
               <span class="value">%</span>
@@ -622,7 +831,7 @@
 
           <div class="property">
             <div class="property-name">box-shadow</div>
-            <div class="property-desc">Menambahkan bayangan pada elemen</div>
+            <div class="property-desc">Adds a shadow effect to an element</div>
             <div class="property-values">
               <span class="value">offset-x offset-y blur color</span>
               <span class="value">inset</span>
@@ -631,7 +840,7 @@
 
           <div class="property">
             <div class="property-name">outline</div>
-            <div class="property-desc">Mengatur outline di sekitar elemen</div>
+            <div class="property-desc">Sets an outline around an element</div>
             <div class="property-values">
               <span class="value">1px solid red</span>
             </div>
@@ -644,7 +853,7 @@
 
           <div class="property">
             <div class="property-name">transform</div>
-            <div class="property-desc">Menerapkan transformasi 2D atau 3D</div>
+            <div class="property-desc">Applies 2D or 3D transformations</div>
             <div class="property-values">
               <span class="value">translate()</span>
               <span class="value">rotate()</span>
@@ -655,7 +864,7 @@
 
           <div class="property">
             <div class="property-name">transition</div>
-            <div class="property-desc">Mengatur transisi antar status</div>
+            <div class="property-desc">Sets transitions between states</div>
             <div class="property-values">
               <span class="value">property duration timing-function delay</span>
             </div>
@@ -663,7 +872,7 @@
 
           <div class="property">
             <div class="property-name">animation</div>
-            <div class="property-desc">Menerapkan animasi ke elemen</div>
+            <div class="property-desc">Applies animations to an element</div>
             <div class="property-values">
               <span class="value"
                 >name duration timing-function delay iteration-count</span
@@ -673,7 +882,7 @@
 
           <div class="property">
             <div class="property-name">@keyframes</div>
-            <div class="property-desc">Mendefinisikan urutan animasi</div>
+            <div class="property-desc">Defines the animation sequence</div>
             <div class="property-values">
               <span class="value">from</span>
               <span class="value">to</span>
@@ -688,22 +897,26 @@
 
           <div class="property">
             <div class="property-name">:hover</div>
-            <div class="property-desc">Styling saat kursor di atas elemen</div>
+            <div class="property-desc">
+              Styles when cursor is over the element
+            </div>
           </div>
 
           <div class="property">
             <div class="property-name">:focus</div>
-            <div class="property-desc">Styling saat elemen mendapat fokus</div>
+            <div class="property-desc">Styles when element receives focus</div>
           </div>
 
           <div class="property">
             <div class="property-name">:active</div>
-            <div class="property-desc">Styling saat elemen diaktifkan</div>
+            <div class="property-desc">Styles when element is activated</div>
           </div>
 
           <div class="property">
             <div class="property-name">:nth-child()</div>
-            <div class="property-desc">Memilih elemen berdasarkan posisi</div>
+            <div class="property-desc">
+              Selects elements based on their position
+            </div>
             <div class="property-values">
               <span class="value">odd</span>
               <span class="value">even</span>
@@ -714,7 +927,7 @@
           <div class="property">
             <div class="property-name">::before / ::after</div>
             <div class="property-desc">
-              Menambahkan konten sebelum/sesudah elemen
+              Adds content before/after an element
             </div>
           </div>
         </div>
@@ -725,9 +938,7 @@
 
           <div class="property">
             <div class="property-name">@media</div>
-            <div class="property-desc">
-              Menerapkan styling berdasarkan kondisi
-            </div>
+            <div class="property-desc">Applies styling based on conditions</div>
             <div class="property-values">
               <span class="value">screen</span>
               <span class="value">print</span>
@@ -737,9 +948,7 @@
 
           <div class="property">
             <div class="property-name">viewport units</div>
-            <div class="property-desc">
-              Unit relatif terhadap ukuran viewport
-            </div>
+            <div class="property-desc">Units relative to viewport size</div>
             <div class="property-values">
               <span class="value">vw</span>
               <span class="value">vh</span>
@@ -750,7 +959,7 @@
 
           <div class="property">
             <div class="property-name">min-width / max-width</div>
-            <div class="property-desc">Membatasi ukuran elemen</div>
+            <div class="property-desc">Limits the size of an element</div>
             <div class="property-values">
               <span class="value">px</span>
               <span class="value">%</span>
@@ -766,7 +975,7 @@
           <div class="property">
             <div class="property-name">clip-path</div>
             <div class="property-desc">
-              Memotong elemen menjadi bentuk tertentu
+              Clips an element into a specific shape
             </div>
             <div class="property-values">
               <span class="value">circle()</span>
@@ -777,7 +986,7 @@
 
           <div class="property">
             <div class="property-name">filter</div>
-            <div class="property-desc">Menerapkan efek visual seperti blur</div>
+            <div class="property-desc">Applies visual effects like blur</div>
             <div class="property-values">
               <span class="value">blur()</span>
               <span class="value">brightness()</span>
@@ -788,7 +997,7 @@
           <div class="property">
             <div class="property-name">backdrop-filter</div>
             <div class="property-desc">
-              Menerapkan filter pada area di belakang elemen
+              Applies filters to the area behind an element
             </div>
             <div class="property-values">
               <span class="value">blur()</span>
@@ -799,7 +1008,7 @@
           <div class="property">
             <div class="property-name">mix-blend-mode</div>
             <div class="property-desc">
-              Mengatur bagaimana elemen berbaur dengan latar belakang
+              Sets how an element blends with the background
             </div>
             <div class="property-values">
               <span class="value">multiply</span>
@@ -810,10 +1019,255 @@
 
           <div class="property">
             <div class="property-name">scroll-behavior</div>
-            <div class="property-desc">Mengatur perilaku scroll</div>
+            <div class="property-desc">Sets the scroll behavior</div>
             <div class="property-values">
               <span class="value">auto</span>
               <span class="value">smooth</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Layout Properties -->
+        <div class="category">
+          <h2>📏 Additional Layout</h2>
+
+          <div class="property">
+            <div class="property-name">z-index</div>
+            <div class="property-desc">
+              Sets the stacking order of positioned elements
+            </div>
+            <div class="property-values">
+              <span class="value">auto</span>
+              <span class="value">number</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">top / right / bottom / left</div>
+            <div class="property-desc">Positions a positioned element</div>
+            <div class="property-values">
+              <span class="value">auto</span>
+              <span class="value">px</span>
+              <span class="value">%</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">min-height / max-height</div>
+            <div class="property-desc">
+              Sets minimum and maximum height of an element
+            </div>
+            <div class="property-values">
+              <span class="value">px</span>
+              <span class="value">%</span>
+              <span class="value">vh</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">object-fit</div>
+            <div class="property-desc">
+              Specifies how an element should be resized
+            </div>
+            <div class="property-values">
+              <span class="value">fill</span>
+              <span class="value">contain</span>
+              <span class="value">cover</span>
+              <span class="value">none</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">visibility</div>
+            <div class="property-desc">Controls element visibility</div>
+            <div class="property-values">
+              <span class="value">visible</span>
+              <span class="value">hidden</span>
+              <span class="value">collapse</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Typography Extended -->
+        <div class="category">
+          <h2>✍️ Typography Extended</h2>
+
+          <div class="property">
+            <div class="property-name">text-decoration</div>
+            <div class="property-desc">
+              Sets text decoration (underline, etc.)
+            </div>
+            <div class="property-values">
+              <span class="value">none</span>
+              <span class="value">underline</span>
+              <span class="value">line-through</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">text-transform</div>
+            <div class="property-desc">Controls text capitalization</div>
+            <div class="property-values">
+              <span class="value">none</span>
+              <span class="value">uppercase</span>
+              <span class="value">lowercase</span>
+              <span class="value">capitalize</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">white-space</div>
+            <div class="property-desc">Controls how whitespace is handled</div>
+            <div class="property-values">
+              <span class="value">normal</span>
+              <span class="value">nowrap</span>
+              <span class="value">pre</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">word-spacing</div>
+            <div class="property-desc">Sets spacing between words</div>
+            <div class="property-values">
+              <span class="value">normal</span>
+              <span class="value">px</span>
+              <span class="value">em</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">font-style</div>
+            <div class="property-desc">Sets font style (italic, etc.)</div>
+            <div class="property-values">
+              <span class="value">normal</span>
+              <span class="value">italic</span>
+              <span class="value">oblique</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Background Extended -->
+        <div class="category">
+          <h2>🖼️ Background Extended</h2>
+
+          <div class="property">
+            <div class="property-name">background-repeat</div>
+            <div class="property-desc">Sets how background images repeat</div>
+            <div class="property-values">
+              <span class="value">repeat</span>
+              <span class="value">no-repeat</span>
+              <span class="value">repeat-x</span>
+              <span class="value">repeat-y</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">background-attachment</div>
+            <div class="property-desc">
+              Sets if background image is fixed or scrolls
+            </div>
+            <div class="property-values">
+              <span class="value">scroll</span>
+              <span class="value">fixed</span>
+              <span class="value">local</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">background-clip</div>
+            <div class="property-desc">
+              Defines the painting area of background
+            </div>
+            <div class="property-values">
+              <span class="value">border-box</span>
+              <span class="value">padding-box</span>
+              <span class="value">content-box</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">background-origin</div>
+            <div class="property-desc">
+              Sets the origin position of background
+            </div>
+            <div class="property-values">
+              <span class="value">padding-box</span>
+              <span class="value">border-box</span>
+              <span class="value">content-box</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Border Extended -->
+        <div class="category">
+          <h2>🔲 Border Extended</h2>
+
+          <div class="property">
+            <div class="property-name">border-width</div>
+            <div class="property-desc">Sets the width of borders</div>
+            <div class="property-values">
+              <span class="value">thin</span>
+              <span class="value">medium</span>
+              <span class="value">thick</span>
+              <span class="value">px</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">border-style</div>
+            <div class="property-desc">Sets the style of borders</div>
+            <div class="property-values">
+              <span class="value">solid</span>
+              <span class="value">dashed</span>
+              <span class="value">dotted</span>
+              <span class="value">double</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">border-color</div>
+            <div class="property-desc">Sets the color of borders</div>
+            <div class="property-values">
+              <span class="value">#hex</span>
+              <span class="value">rgb()</span>
+              <span class="value">transparent</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cursor & Pointer -->
+        <div class="category">
+          <h2>🖱️ Cursor & Pointer</h2>
+
+          <div class="property">
+            <div class="property-name">cursor</div>
+            <div class="property-desc">Sets the type of cursor</div>
+            <div class="property-values">
+              <span class="value">auto</span>
+              <span class="value">pointer</span>
+              <span class="value">not-allowed</span>
+              <span class="value">wait</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">pointer-events</div>
+            <div class="property-desc">
+              Controls how element responds to pointer events
+            </div>
+            <div class="property-values">
+              <span class="value">auto</span>
+              <span class="value">none</span>
+            </div>
+          </div>
+
+          <div class="property">
+            <div class="property-name">user-select</div>
+            <div class="property-desc">Controls text selection</div>
+            <div class="property-values">
+              <span class="value">auto</span>
+              <span class="value">none</span>
+              <span class="value">text</span>
             </div>
           </div>
         </div>
@@ -821,27 +1275,42 @@
 
       <footer>
         <p>
-          Daftar ini mencakup properti CSS yang umum digunakan. CSS terus
-          berkembang dengan properti baru yang ditambahkan secara berkala.
+          This list includes commonly used CSS properties. CSS continues to
+          evolve with new properties added regularly.
         </p>
-        <p>
-          Total: <span id="propCount">80+</span> properti CSS yang tercantum
-        </p>
+        <p>Total: <span id="propCount">80+</span> CSS properties listed</p>
       </footer>
     </div>
 
     <script>
-      // Hitung jumlah properti dan kategori
+      // Count properties and categories with animation
       document.addEventListener("DOMContentLoaded", function () {
         const categories = document.querySelectorAll(".category");
         const properties = document.querySelectorAll(".property");
+        const totalProps = properties.length;
+        const totalCats = categories.length;
 
-        document.getElementById("totalProps").textContent = properties.length;
-        document.getElementById("totalCats").textContent = categories.length;
-        document.getElementById("propCount").textContent = properties.length;
+        // Animate counter
+        function animateCounter(element, target) {
+          let current = 0;
+          const increment = target / 50;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            element.textContent = Math.floor(current);
+          }, 20);
+        }
 
-        // Fungsi pencarian
+        animateCounter(document.getElementById("totalProps"), totalProps);
+        document.getElementById("totalCats").textContent = totalCats;
+        document.getElementById("propCount").textContent = totalProps;
+
+        // Search functionality with highlight
         const searchInput = document.getElementById("searchInput");
+
         searchInput.addEventListener("keyup", function () {
           const searchTerm = searchInput.value.toLowerCase();
           const properties = document.querySelectorAll(".property");
@@ -859,23 +1328,45 @@
               propertyDesc.includes(searchTerm)
             ) {
               property.style.display = "block";
-              property.parentElement.style.display = "block";
+              property.style.animation = "fadeInUp 0.3s ease";
             } else {
               property.style.display = "none";
             }
           });
 
-          // Sembunyikan kategori yang tidak memiliki properti yang terlihat
+          // Hide categories with no visible properties
           const categories = document.querySelectorAll(".category");
           categories.forEach((category) => {
-            const visibleProperties = category.querySelectorAll(
-              '.property[style="display: block"]'
-            );
-            if (visibleProperties.length === 0) {
+            const visibleProperties = Array.from(
+              category.querySelectorAll(".property")
+            ).filter((p) => p.style.display !== "none");
+
+            if (visibleProperties.length === 0 && searchTerm !== "") {
               category.style.display = "none";
             } else {
               category.style.display = "block";
             }
+          });
+
+          // Update stats
+          const visibleProps = Array.from(
+            document.querySelectorAll(".property")
+          ).filter((p) => p.style.display !== "none").length;
+
+          if (searchTerm !== "") {
+            document.getElementById("totalProps").textContent = visibleProps;
+          } else {
+            document.getElementById("totalProps").textContent = totalProps;
+          }
+        });
+
+        // Add click animation to properties
+        properties.forEach((property) => {
+          property.addEventListener("click", function () {
+            this.style.transform = "scale(0.98)";
+            setTimeout(() => {
+              this.style.transform = "";
+            }, 200);
           });
         });
       });

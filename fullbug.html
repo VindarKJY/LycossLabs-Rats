@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Modern dengan Banyak Error</title>
+    <style>
+        :root 
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body 
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+    
+        .container 
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        header 
+            background: linear-gradient(135deg, var(--primary), #2980b9);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        h1 
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        /* ERROR: Properti CSS yang tidak valid */
+        .subtitle 
+            font-size: 1.3rem;
+            opacity: 0.9;
+            invalid-property: ini-error-css;
+        }
+        
+        .main-content 
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+            gap: 20px;
+        }
+        
+        .panel 
+            flex: 1;
+            min-width: 300px;
+            background: var(--light);
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .panel h2 
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        /* ERROR: Selector yang salah */
+        .panel h3:unknown-pseudo 
+            color: var(--dark);
+            margin: 15px 0 10px;
+        }
+        
+        .form-group 
+            margin-bottom: 20px;
+        }
+        
+        label 
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        input, select, textarea 
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        /* ERROR: Properti tidak valid */
+        input:focus, select:focus, textarea:focus 
+            border-color: var(--primary);
+            outline: none;
+            invalid-focus: error-value;
+        }
+        
+        .btn 
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn:hover 
+            background: #2980b9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+        
+        .btn-success 
+            background: var(--secondary);
+        }
+        
+        .btn-danger 
+            background: var(--accent);
+        }
+        
+        .card 
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-left: 4px solid var(--primary);
+        }
+        
+        .card h3 
+            color: var(--dark);
+            margin-bottom: 10px;
+        }
+        
+        .stats 
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-item 
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+    
+        .stat-value 
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .stat-label 
+            font-size: 0.9rem;
+            color: #7f8c8d;
+        }
+        
+        .user-list 
+            list-style: none;
+        }
+        
+        .user-item 
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .user-item:last-child 
+            border-bottom: none;
+        }
+        
+        .user-avatar 
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+        
+        .user-info h4 
+            margin-bottom: 5px;
+            color: var(--dark);
+        
+    
+        .user-info p 
+            color: #78c8d;
+            font-size: 0.9rem;
+        
+        
+        footer 
+            text-align: center;
+            padding: 20px;
+            background: var(--dark);
+            color: white;
+            margin-top: 30px;
+        }
+        
+        /* ERROR: Medi query yang tidak valid */
+        @media max-width: 768px) {
+            .main-conent {
+                flex-direction: column;
+            }
+            
+            h1 
+                font-size: 2rem;
+            }
+            
+            invalid-media-query: error-value;
+        }
+    </style>
+</head
+body
+    <div class="container"
+        <header
+            <h1>Alikasi Modern dengan Banyak Bug</h1>
+            <p class="subtitle">Tantang diri Anda untuk memperbaiki semua error dalam kode ini!</p>
+        </header>
+        
+        <div class="main-content"
+        <div class="panel"
+                <h2>Form Input Data</h2>
+                
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <!-- ERROR: Attribute yang salah -->
+                    <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required invalid-attr="error">
+                </div
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <!-- ERROR: Type input yang salah -->
+                    <input type="emails" id="email" name="email" placeholder="Masukkan alamat email" required>
+                </div>
+                
+                <div class="form-group"
+                    <label for="password">Kata Sandi</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan kata sandi" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="tanggal">Tanggal Lahir</label>
+                    <!-- ERROR: Attribute value yang salah -->
+                    <input type="date" id="tanggal" name="tanggal" value="invalid-date">
+                </div>
+                
+                <div class="form-group">
+                    <label for="kategori">Kategori Pengguna</label>
+                    <select id="kategori" name="kategori">
+                        <!-- ERROR: Tag option tidak ditutup dengan benar -->
+                        <option value="1">Pengguna Biasa
+                        <option value="2">Pengguna Premium
+                        <option value="3">Administrator
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pesan">Pesan Tambahan</label>
+                    <!-- ERROR: Tag textarea tidak ditutup -->
+                    <textarea id="pesan" name="pesan" rows="4" placeholder="Tulis pesan tambahan di sini...">
+                </div>
+                
+                <button class="btn" onclick="simpanData()">Simpan Data</button>
+                <button class="btn btn-danger" onclick="resetForm()">Reset Form</button>
+            </div>
+            
+            <div class="panel">
+                <h2>Dashboard Utama</h2>
+                
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-pengguna">0</div>
+                        <div class="stat-label">Total Pengguna</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-aktivitas">0</div>
+                        <div class="stat-label">Aktivitas Hari Ini</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="stat-pendapatan">0</div>
+                        <div class="stat-label">Pendapatan</div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3>Notifikasi Terbaru</h3>
+                    <p id="notifikasi">Tidak ada notifikasi terbaru.</p>
+                    <button class="btn btn-success" onclick="tampilkanNotifikasi()">Perbarui Notifikasi</button>
+                </div>
+                
+                <div class="card">
+                    <h3>Data Pengguna</h3>
+                    <ul class="user-list" id="user-list">
+                        <!-- Data pengguna akan dimuat di sini -->
+                    </ul>
+                    <button class="btn" onclick="muatDataPengguna()">Muat Data</button>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Aplikasi Modern &copy; 2023. Semua error disengaja untuk tujuan edukasi.</p>
+        </footer>
+    </div>
+
+    <script>
+        // ERROR: Variabel tidak dideklarasikan dengan benar
+        pengguna = [];
+        
+        // ERROR Fungsi dengan parameter tidak valid
+        function simpanDataama, email, password, tanggal, kategori, pesan) {
+            // ERROR: Menggunakan variabel yang tidak didefinisikan
+            const dataBaru = {
+                nama: document.getElementById(nama').value,
+                email: document.getElementById('email').value
+                password: document.getElementById('password').value,
+                tanggal: document.getElementById('tanggal').value,
+                kategori: document.getElementById('kategori').value,
+                pesan: document.getElementById('pesan').value
+            };
+            
+            // ERROR: Method array yang salah
+            pengguna.pushs(dataBaru);
+            
+            // ERROR: Mengubah innerHTML dengan cara yang berpotensi error
+            document.getElementById('stat-pengguna'.innerHTML = pengguna.length;
+            
+            // ERROR: Alert dengan variabel tidak terdefinisi
+            alertData ' + namax + ' berhasil disimpan!');
+            
+            // ERROR: Memanggil fungsi yang tidak ada
+            perbaruiDashboard();
+        }
+        
+        function resetForm(
+            // ERROR: Selector yang salah
+            document.querySelectorAll('input, select, textarea').forEach(element => {
+                element.value = '';
+            });
+        }
+    
+        function tampilkanNotifikas) {
+            const notifikasi = [
+                "Sistem akan maintenance pada pukul 23:00WIB",
+                "Versi terbaru aplikasi sudah tersedia",
+                "5 pengguna baru bergabung hari ini"
+            ];
+            
+            // ERROR: Index array di luar bounds
+            const randomIndex = Math.floor(Math.random( * 5);
+            
+            // ERROR: Typo pada id element
+            document.getElementById('notifikasix').textContent = notifikasi[randomIndex];
+        }
+        
+        function muatDataPengguna( 
+            // ERROR: Data tidak terstruktur dengan benar
+            const dataPengguna = [
+                { id: 1, nama: "Ahmad Santoso", email: "ahmad@example.com", role: "Admin" },
+                { id: 2, nama: "Budi Setiawan", email: "budi@example.com", role: "User" },
+                { id: 3, nama: "Citra Lestari", email: "citra@example.com", role: "User" }
+                // ERROR: Kurang penutup kurung siku
+            ;
+            
+            const userList = document.getElementById('user-list');
+            userList.innerHTML = '';
+            
+            // ERROR: Loop dengan kondisi yang salah
+            for (let i = 0; i <= dataPengguna.length; i++) {
+                const user = dataPengguna[i];
+                
+                // ERROR: Template literal tidak ditutup dengan benar
+                const userHTML = `
+                    <li class="user-item"
+                        <div class="user-avatar">${user.nama.charAt(0)}</div>
+                        <div class="user-info">
+                            <h4>${user.nama}</h4>
+                            <p>${user.email} | ${user.role}</p
+                        </div>
+                    </li>
+                `;
+                
+                // ERROR: Method yang salah untuk menambahkan elemen
+                userList.appendInnerHTML(userHTML);
+            }
+        }
+        
+        // ERROR: Event listener dengan fungsi yang tidak ada
+        document.addEventListener('DOMContentLoaded', function() {
+            inisialisasiAplikasi(;
+            
+            // ERROR: Timeout dengan parameter tidak valid
+            setTimeout(perbaruiStatistik, "2000";
+        });
+        
+        function perbaruiStatistik() {
+            // ERROR: Math method yang tidak ada
+            const aktivitas = Math.randomBetween(10, 100);
+            const pendapatan = Math.randomBetween(1000, 5000
+            
+            document.getElementById('stat-aktivitas').textContent = aktivitas;
+            document.getElementById('stat-pendapatan').textContent = 'Rp ' + pendapatan;
+            
+            // ERROR: Interval dengan fungsi tidak terdefinisi
+            setInterval(perbaruiDataRealTime, 5000
+        }
+        
+        // ERROR: Fungsi yang tidak selesai
+        function fiturTidakBerfungsi( {
+            console.log("Fitur ini memang tidak berfungsi");
+            
+        // ERROR: Kurang penutup kurung kurawal
+        
+        // ERROR: Console log dengan syntax error
+        console.log("Aplikasi dimuat dengan" + error);
+    </script>
+</body>
+</html>

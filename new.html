@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=, initial-scale=1.0" />
+    <head>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+      body {
+        background: url(images/bgweb.jpg);
+        min-height: 100vh;
+        background-size: cover;
+        background-position: center;
+      }
+      .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2.5rem 10%;
+        background-color: #ffffff40;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 1.3rem 10%;
+        position: fixed;
+        border-radius: 0 0 1rem 1rem;
+        backdrop-filter: blur(50px);
+      }
+      .logo {
+        font-size: 2rem;
+        font-weight: bold;
+        text-decoration: none;
+        color: #ffffff;
+      }
+      .navbar a {
+        margin-left: 1rem;
+        text-decoration: none;
+        font-size: 18px;
+        color: #ffffff;
+      }
+      .icon i {
+        display: flex;
+        position: fixed;
+        right: 5%;
+        font-size: 2.8rem;
+        color: #ffffff;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+      }
+      @media (max-width: 992px) {
+        .header {
+          padding: 1rem 5%;
+        }
+      }
+      @media (max-width: 768px) {
+        .icon {
+          display: inline-flex;
+          visibility: visible;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <a href="#" class="logo">logo</a>
+      <label for="" class="icon">
+      <i class="fas fa-bars"></i></label>
+      <nav class="navbar">
+        <a href="#">logos</a>
+        <a href="#">logos</a>
+        <a href="#">logos</a>
+        <a href="#">logos</a>
+        <a href="#">logos</a>
+        <a href="#">logos</a>
+      </nav>
+    </header>
+  </body>
+</html>

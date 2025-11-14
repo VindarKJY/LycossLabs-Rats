@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Journey - Belajar & Berbagi Ilmu Programming</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Reset & Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      :root {
+        --primary: #4361ee;
+        --secondary: #3a0ca3;
+        --accent: #7209b7;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #4cc9f0;
+        --warning: #f72585;
+        --gray: #6c757d;
+      }
+
+      body {
+        background-color: #f5f7fa;
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Header & Navigation */
+      header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        width: 90%;
+        max-width: 2200px;
+        margin: 0 auto;
+        padding: 0 10px;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        z-index: 100;
+      }
+
+      /* Desktop Menu */
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .nav-links li a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+        padding: 8px 15px;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        white-space: nowrap;
+
+        i {
+          background-color: #212529;
+        }
+      }
+
+      .nav-links li a:hover {
+        color: var(--success);
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .nav-links li a i {
+        font-size: 1rem;
+      }
+
+      /* Hamburger Menu */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        z-index: 1001;
+        background: none;
+        border: none;
+        padding: 5px;
+      }
+
+      .bar {
+        width: 25px;
+        height: 3px;
+        background: white;
+        margin: 3px 0;
+        transition: 0.3s;
+        border-radius: 2px;
+      }
+
+      /* Overlay for mobile menu */
+      .menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s, visibility 0.3s;
+        z-index: 0;
+      }
+
+      .menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+      /*breakpoint*/
+
+      @media (max-width: 992px) {
+        .navbar {
+          padding: 1,3rem 5%;
+        }
+      } 
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+        .hamburger {
+          display: flex;
+        }
+
+        /* Animasi hamburger saat aktif */
+        .hamburger.active .bar:nth-child(1) {
+          transform: rotate(-45deg) translate(-5px, 6px);
+        }
+
+        .hamburger.active .bar:nth-child(2) {
+          opacity: 0;
+        }
+
+        .hamburger.active .bar:nth-child(3) {
+          transform: rotate(45deg) translate(-5px, -6px);
+        }
+
+        /* Mobile Menu Sidebar */
+        .nav-links {
+          position: fixed;
+          top: 0;
+          left: -100%;
+          width: 280px;
+          height: 100vh;
+          background: var(--secondary);
+          flex-direction: column;
+          padding: 80px 0 2rem;
+          transition: left 0.3s ease;
+          box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+          z-index: 100;
+          align-items: flex-start;
+          gap: 0;
+          overflow-y: auto;
+        }
+
+        .nav-links.active {
+          left: 0;
+        }
+
+        .nav-links li {
+          width: 100%;
+        }
+
+        .nav-links li a {
+          width: 100%;
+          padding: 1rem 2rem;
+          border-radius: 0;
+          justify-content: flex-start;
+        }
+
+        .nav-links li a:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-left: 4px solid var(--success);
+        }
+      }
+
+      /* Hero Section */
+      .hero {
+        padding: 8rem 0 5rem;
+        text-align: center;
+        background: linear-gradient(
+            rgba(67, 97, 238, 0.9),
+            rgba(58, 12, 163, 0.9)
+          ),
+          url("https://raw.githubusercontent.com/VindarKJY/Assets/refs/heads/main/LOGO_NO.BG-removebg-preview%20(1).png")
+            center/cover;
+        color: white;
+        margin-top: 70px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--success);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: #3a9bb8;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Sections */
+      section {
+        padding: 5rem 0;
+      }
+
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .section-title p {
+        color: var(--gray);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* About Section */
+      .about-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .about-text {
+        flex: 1;
+      }
+
+      .about-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .about-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: var(--primary);
+        color: white;
+        border-radius: 50%;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .social-links a:hover {
+        background: var(--accent);
+        transform: translateY(-3px);
+      }
+
+      .about-image {
+        flex: 1;
+        text-align: center;
+      }
+
+      .profile-img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 5px solid var(--primary);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        margin: 0 auto;
+      }
+
+      .profile-img i {
+        font-size: 8rem;
+        color: #fff;
+      }
+
+      /* Products Section */
+      .products {
+        background: var(--light);
+      }
+
+      .products-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+      }
+
+      .product-card {
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s;
+      }
+
+      .product-card:hover {
+        transform: translateY(-10px);
+      }
+
+      .product-img {
+        height: 200px;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3rem;
+      }
+
+      .product-content {
+        padding: 1.5rem;
+      }
+
+      .product-content h3 {
+        margin-bottom: 0.5rem;
+        color: var(--secondary);
+      }
+
+      .product-content p {
+        color: var(--gray);
+        margin-bottom: 1rem;
+      }
+
+      /* Resources Section */
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .resource-card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        text-align: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s;
+        border-top: 4px solid var(--primary);
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .resource-icon {
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 1rem;
+      }
+
+      .resource-card h3 {
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .resource-card p {
+        color: var(--gray);
+        margin-bottom: 1.5rem;
+      }
+
+      /* YouTube Section */
+      .youtube {
+        background: var(--light);
+      }
+
+      .youtube-content {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+      }
+
+      .youtube-text {
+        flex: 1;
+      }
+
+      .youtube-text h3 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+        color: var(--secondary);
+      }
+
+      .youtube-text p {
+        margin-bottom: 1.5rem;
+      }
+
+      .youtube-video {
+        flex: 1;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .video-placeholder {
+        background: linear-gradient(135deg, #ff0000, #cc0000);
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 5rem;
+      }
+
+      /* Footer */
+      footer {
+        background: var(--dark);
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-column h3 {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+        color: var(--success);
+      }
+
+      .footer-links {
+        list-style: none;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.8rem;
+      }
+
+      .footer-links a {
+        color: #adb5bd;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .footer-links a:hover {
+        color: var(--success);
+      }
+
+      .copyright {
+        text-align: center;
+        padding-top: 2rem;
+        border-top: 1px solid #495057;
+        color: #adb5bd;
+        font-size: 0.9rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .about-content,
+        .youtube-content {
+          flex-direction: column;
+        }
+
+        .about-image,
+        .youtube-video {
+          order: -1;
+        }
+
+        .hero h1 {
+          font-size: 2.5rem;
+        }
+
+        .hero {
+          padding: 6rem 0 4rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 1rem;
+        }
+
+        .section-title h2 {
+          font-size: 2rem;
+        }
+
+        .profile-img {
+          width: 250px;
+          height: 250px;
+        }
+
+        .profile-img i {
+          font-size: 6rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header & Navigation -->
+    <header>
+      <div class="nav-container">
+        <nav class="navbar">
+          <div class="logo">
+            <span>LycosLabs</span>
+          </div>
+
+          <ul class="nav-links" id="nav-links">
+            <li>
+              <a href="#home">
+                <i class="fas fa-home"></i>
+                Home
+              </a>
+            </li>
+            <li>
+              <a href="#about">
+                <i class="fas fa-user"></i>
+                Tentang Saya
+              </a>
+            </li>
+            <li>
+              <a href="#products">
+                <i class="fas fa-cart-shopping"></i>
+                Produk Digital
+              </a>
+            </li>
+            <li>
+              <a href="#resources">
+                <i class="fas fa-file"></i>
+                Resources
+              </a>
+            </li>
+            <li>
+              <a href="#youtube">
+                <i class="fab fa-youtube"></i>
+                YouTube
+              </a>
+            </li>
+            <li>
+              <a href="#contact">
+                <i class="fas fa-phone"></i>
+                Kontak
+              </a>
+            </li>
+          </ul>
+
+          <button class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Overlay -->
+    <div class="menu-overlay" id="menu-overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+      <div class="container">
+        <h1>Welcome to My Programming Journey</h1>
+        <p>
+          Selamat datang di website portfolio saya! Saya membagikan pengalaman
+          belajar programming, resource berguna, dan produk digital yang bisa
+          membantu perjalanan coding Anda.
+        </p>
+        <a href="#about" class="btn">Mulai Jelajahi</a>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang Saya</h2>
+          <p>
+            Belajar programming adalah perjalanan yang menantang namun
+            menyenangkan. Di sini saya berbagi pengalaman dan pengetahuan yang
+            saya dapatkan.
+          </p>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <h3>Halo, Saya Pembelajar Programming!</h3>
+            <p>
+              Saya adalah seorang enthusiast programming yang sedang dalam
+              perjalanan belajar dan berbagi pengetahuan tentang coding melalui
+              media sosial. Saya percaya bahwa berbagi pengetahuan adalah cara
+              terbaik untuk memperdalam pemahaman.
+            </p>
+            <p>
+              Di website ini, Anda akan menemukan berbagai resource programming,
+              produk digital yang saya buat, dan konten edukasi dari perjalanan
+              belajar saya.
+            </p>
+
+            <div class="social-links">
+              <a href="https://github.com/username" title="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://youtube.com/channel/username" title="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="https://instagram.com/username" title="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://linkedin.com/in/username" title="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+              <a href="https://twitter.com/username" title="Twitter"
+                ><i class="fab fa-twitter"></i
+              ></a>
+            </div>
+          </div>
+          <div class="about-image">
+            <div class="profile-img">
+              <i class="fas fa-user"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+      <div class="container">
+        <div class="section-title">
+          <h2>Produk Digital</h2>
+          <p>
+            Berbagai template dan alat digital yang dapat membantu produktivitas
+            Anda.
+          </p>
+        </div>
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-img">
+              <i class="fab fa-canva"></i>
+            </div>
+            <div class="product-content">
+              <h3>Template Canva</h3>
+              <p>
+                Koleksi template presentasi, media sosial, dan desain grafis
+                yang siap digunakan.
+              </p>
+              <a href="#" class="btn">Lihat Detail</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <i class="fas fa-file-excel"></i>
+            </div>
+            <div class="product-content">
+              <h3>Template Excel</h3>
+              <p>
+                Template spreadsheet untuk analisis data, keuangan, dan
+                produktivitas.
+              </p>
+              <a href="#" class="btn">Lihat Detail</a>
+            </div>
+          </div>
+          <div class="product-card">
+            <div class="product-img">
+              <i class="fas fa-file-powerpoint"></i>
+            </div>
+            <div class="product-content">
+              <h3>Template Presentasi</h3>
+              <p>
+                Template PowerPoint dan Google Slides untuk presentasi yang
+                profesional.
+              </p>
+              <a href="#" class="btn">Lihat Detail</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources">
+      <div class="container">
+        <div class="section-title">
+          <h2>Resources Programming</h2>
+          <p>
+            Kumpulan cheat sheet dan resource berguna untuk belajar programming.
+          </p>
+        </div>
+        <div class="resources-grid">
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3>HTML Cheat Sheet</h3>
+            <p>Referensi lengkap tag HTML dengan contoh penggunaan.</p>
+            <a href="#" class="btn">Download</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <h3>CSS Cheat Sheet</h3>
+            <p>Kumpulan properti CSS dan tips styling yang berguna.</p>
+            <a href="#" class="btn">Download</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fab fa-js"></i>
+            </div>
+            <h3>JavaScript Cheat Sheet</h3>
+            <p>Referensi method JavaScript dan konsep penting.</p>
+            <a href="#" class="btn">Download</a>
+          </div>
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-database"></i>
+            </div>
+            <h3>SQL Cheat Sheet</h3>
+            <p>Panduan query SQL untuk berbagai operasi database.</p>
+            <a href="#" class="btn">Download</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- YouTube Section -->
+    <section class="youtube" id="youtube">
+      <div class="container">
+        <div class="section-title">
+          <h2>Konten YouTube</h2>
+          <p>
+            Video tutorial dan pembahasan programming dari channel YouTube saya.
+          </p>
+        </div>
+        <div class="youtube-content">
+          <div class="youtube-text">
+            <h3>Belajar Programming Bersama</h3>
+            <p>
+              Di channel YouTube saya, saya berbagi tutorial programming, tips
+              belajar coding, dan membahas konsep-konsep penting dalam dunia
+              development.
+            </p>
+            <p>
+              Subscribe untuk mendapatkan notifikasi video terbaru dan ikuti
+              perjalanan belajar programming saya!
+            </p>
+            <a href="https://youtube.com/channel/username" class="btn"
+              >Kunjungi Channel</a
+            >
+          </div>
+          <div class="youtube-video">
+            <div class="video-placeholder">
+              <i class="fab fa-youtube"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>LycosLabs</h3>
+            <p>
+              Website portfolio dan resource programming untuk membantu
+              perjalanan belajar coding Anda.
+            </p>
+            <div class="social-links">
+              <a href="https://github.com/username" title="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="https://youtube.com/channel/pinpon_yt" title="YouTube"
+                ><i class="fab fa-youtube"></i
+              ></a>
+              <a href="https://instagram.com/username" title="Instagram"
+                ><i class="fab fa-instagram"></i
+              ></a>
+            </div>
+          </div>
+          <div class="footer-column">
+            <h3>Menu Cepat</h3>
+            <ul class="footer-links">
+              <li><a href="#home">Home</a></li>
+              <li><a href="#about">Tentang Saya</a></li>
+              <li><a href="#products">Produk Digital</a></li>
+              <li><a href="#resources">Resources</a></li>
+              <li><a href="#youtube">YouTube</a></li>
+            </ul>
+          </div>
+          <div class="footer-column">
+            <h3>Kontak</h3>
+            <ul class="footer-links">
+              <li><i class="fas fa-envelope"></i> email@example.com</li>
+              <li><i class="fas fa-map-marker-alt"></i> Kota, Negara</li>
+            </ul>
+          </div>
+        </div>
+        <div class="copyright">
+          <p>&copy; 2023 LycosLabs. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const hamburger = document.getElementById("hamburger");
+        const navLinks = document.getElementById("nav-links");
+        const overlay = document.getElementById("menu-overlay");
+        const menuItems = document.querySelectorAll(".nav-links a");
+        const logo = document.querySelector(".logo");
+
+
+        // Toggle menu
+        function toggleMenu() {
+          hamburger.classList.toggle("active");
+          navLinks.classList.toggle("active");
+          overlay.classList.toggle("active");
+          logo.classList.toggle("active");
+        }
+
+        // Event listeners
+        if (hamburger) {
+          hamburger.addEventListener("click", toggleMenu);
+        }
+
+        if (overlay) {
+          overlay.addEventListener("click", toggleMenu);
+        }
+
+        // Close menu when clicking menu item
+        menuItems.forEach((item) => {
+          item.addEventListener("click", () => {
+            if (window.innerWidth <= 768) {
+              toggleMenu();
+            }
+          });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute("href");
+            if (targetId === "#") return;
+
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              const headerOffset = 80;
+              const elementPosition = targetElement.offsetTop;
+              const offsetPosition = elementPosition - headerOffset;
+
+              window.scrollTo({
+                top: offsetPosition,
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
